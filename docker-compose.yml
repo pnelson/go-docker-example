@@ -1,0 +1,12 @@
+version: '3.4'
+services:
+  api:
+    build:
+      context: .
+      target: builder
+    command: /build/watch.sh
+    volumes:
+      - go:/go
+      - ./service:/build
+volumes:
+  go:
