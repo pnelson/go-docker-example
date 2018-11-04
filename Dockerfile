@@ -13,7 +13,7 @@ COPY service /build/
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix docker -ldflags='-w -s' -o /build/bin/go-docker-example /build/cmd/go-docker-example
 
 FROM builder AS watcher
-RUN chown -R docker:docker /go && mkdir /api && chown docker:docker /api
+RUN mkdir /api && chown docker:docker /api
 USER docker:docker
 COPY --from=builder --chown=docker:docker /go/pkg/mod /go/pkg/mod
 COPY build.sh /api/build.sh
