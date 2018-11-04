@@ -6,7 +6,4 @@ services:
       target: watcher
     command: /api/watch.sh
     volumes:
-      - go:/go
       - ./service:/api/src
-volumes:
-  go:
