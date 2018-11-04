@@ -3,10 +3,10 @@ services:
   api:
     build:
       context: .
-      target: builder
-    command: /build/watch.sh
+      target: watcher
+    command: /api/watch.sh
     volumes:
       - go:/go
-      - ./service:/build
+      - ./service:/api/src
 volumes:
   go:

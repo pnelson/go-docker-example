@@ -1,4 +1,9 @@
 #!/usr/bin/env sh
 
-docker-compose build --build-arg UID=$(id -u) --build-arg GID=$(id -g)
-docker-compose up
+app="go-docker-example"
+bin="/api/bin/$app"
+cmd="/api/src/cmd/$app"
+
+echo 'building...'
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix docker -o $bin $cmd
+$bin
